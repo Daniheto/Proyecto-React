@@ -1,4 +1,4 @@
-import Img from "./Img";
+import CartWidget from "./CartWidget";
 
 const NavBar = () => {
   return (
@@ -6,7 +6,7 @@ const NavBar = () => {
       <a href="https://www.google.com/">Google</a>
       <a href="https://plataforma.coderhouse.com/">Coder</a>
       <a href="https://www.youtube.com/">YouTube</a>
-      <Img />
+      <CartWidget />
     </nav>
   );
 };
