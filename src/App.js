@@ -3,10 +3,18 @@ import Footer from "./Components/Footer";
 import ItemListContainer from "./Components/ItemListContainer";
 
 function App() {
+  const miOnAdd = () => {};
+
   return (
     <>
       <Header />
-      <ItemListContainer nombre="Daniel" apellido="Hernandez" />
+      <ItemListContainer
+        nombre="Daniel"
+        apellido="Hernandez"
+        initial={1}
+        onAdd={miOnAdd}
+        stock={5}
+      />
       <Footer />
     </>
   );
