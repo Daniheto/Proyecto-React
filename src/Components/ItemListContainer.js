@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ItemList from "./ItemList";
 
-const ItemListContainer = (greeting) => {
-  const [contador, setContador] = useState(greeting.initial);
+let productosIniciales = [
+  { indice: 1, nombre: "producto1", precio: 100 },
+  { indice: 2, nombre: "producto2", precio: 200 },
+  { indice: 3, nombre: "producto3", precio: 300 },
+];
 
-  const handleClick = () => {
-    setContador(contador + 1);
-  };
+const ItemListContainer = (greeting, producto) => {
+  const [productos, setProductos] = useState([]);
 
-  const restar = () => {
-    setContador(contador - 1);
-  };
+  useEffect(() => {
+    const promesa = new Promise((res, rej) => {
+      setTimeout(() => {
+        res(productosIniciales);
+      }, 2000);
+    });
 
-  const confirmar = () => {};
+    promesa
+      .then((respuestaApi) => {
+        setProductos(productosIniciales);
+      })
+
+      .catch((errorApi) => {
+        console.log(errorApi);
+      });
+  });
 
   return (
     <main className="mainStyle">
@@ -19,20 +33,7 @@ const ItemListContainer = (greeting) => {
         Hola {greeting.nombre} {greeting.apellido}, bienvenido a la pagina de
         hammers ultimate club.
       </h2>
-      <div className="card">
-        <div>
-          <p>Cantidad : {contador} </p>
-          <button className="aumenta" onClick={handleClick}>
-            +
-          </button>
-          <button className="disminuye" onClick={restar}>
-            -
-          </button>
-        </div>
-        <button className="confirmar" onClick={confirmar}>
-          Confirmar
-        </button>
-      </div>
+      <ItemList />
     </main>
   );
 };

@@ -53,27 +53,26 @@ body,
   flex-grow: 1;
   flex-direction: column;
   align-items: center;
+}
+.card {
+  margin: 2rem;
+  border: 5rem;
+  padding: 2rem;
+  box-shadow: 0 2px 5px rgb(151, 23, 23);
 
-  .card {
-    margin: 2rem;
-    border: 5rem;
-    padding: 2rem;
-    box-shadow: 0 2px 5px rgb(151, 23, 23);
+  .aumenta {
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
 
-    .aumenta {
-      margin-top: 1rem;
-      margin-left: 1rem;
-    }
+  .disminuye {
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
 
-    .disminuye {
-      margin-top: 1rem;
-      margin-left: 1rem;
-    }
-
-    .confirmar {
-      margin-top: 1rem;
-      margin-left: 1rem;
-    }
+  .confirmar {
+    margin-top: 1rem;
+    margin-left: 1rem;
   }
 }
 
