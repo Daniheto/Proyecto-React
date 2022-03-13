@@ -7,14 +7,16 @@ let productosIniciales = [
   { indice: 3, nombre: "producto3", precio: 300 },
 ];
 
-const ItemListContainer = (greeting, producto) => {
+const ItemListContainer = (greeting) => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(true);
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
     const promesa = new Promise((res, rej) => {
       setTimeout(() => {
         res(productosIniciales);
-      }, 2000);
+      }, 3000);
     });
 
     promesa
@@ -24,6 +26,10 @@ const ItemListContainer = (greeting, producto) => {
 
       .catch((errorApi) => {
         console.log(errorApi);
+        setError("Hubo un error");
+      })
+      .finally(() => {
+        setLoading(false);
       });
   });
 
@@ -33,7 +39,12 @@ const ItemListContainer = (greeting, producto) => {
         Hola {greeting.nombre} {greeting.apellido}, bienvenido a la pagina de
         hammers ultimate club.
       </h2>
-      <ItemList />
+      <p>{loading ? "Cargando..." : "Ya tenes los productos"}</p>
+      <ul>
+        {productos.map((producto, indice) => {
+          return <li>{producto.nombre}</li>;
+        })}
+      </ul>
     </main>
   );
 };
