@@ -40,11 +40,7 @@ const ItemListContainer = (greeting) => {
         hammers ultimate club.
       </h2>
       <p>{loading ? "Cargando..." : "Ya tenes los productos"}</p>
-      <ul>
-        {productos.map((producto, indice) => {
-          return <li>{producto.nombre}</li>;
-        })}
-      </ul>
+      <ItemList productos={productos} />
     </main>
   );
 };

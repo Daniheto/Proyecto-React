@@ -1,21 +1,17 @@
-/*const ItemDetail = () => {
+const ItemDetail = ({ productos }) => {
   return (
-    <div className="detalle">
-      <p>{loading ? "Cargando..." : "Ya tenes el detalle del producto"}</p>
-      <ul>
-        {productos.map((producto, indice) => {
-          return (
-            <li>
-              {producto.nombre}
-              <br />
-              {producto.indice}
-              <br />${producto.precio}
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <ul>
+      {productos.map((producto, indice) => {
+        return (
+          <>
+            <li>{producto.nombre}</li>
+            <li>{producto.indice}</li>
+            <li>${producto.precio}</li>
+          </>
+        );
+      })}
+    </ul>
   );
 };
 
-export default ItemDetail;*/
+export default ItemDetail;
