@@ -4,7 +4,7 @@ const ItemList = () => {
   return (
     <ul>
       {productos.map((producto, indice) => {
-        return <li>{producto.nombre}</li>;
+        return <Item />;
       })}
     </ul>
   );

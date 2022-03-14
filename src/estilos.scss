@@ -76,6 +76,20 @@ body,
   }
 }
 
+.detalle {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+  border: 5rem;
+  padding: 2rem;
+  box-shadow: 0 2px 5px rgb(151, 23, 23);
+  ul {
+    list-style: none;
+  }
+}
+
 footer {
   background-color: $colorPrimario;
   color: white;
