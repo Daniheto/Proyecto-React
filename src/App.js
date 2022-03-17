@@ -1,20 +1,18 @@
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import ItemListContainer from "./Components/ItemListContainer";
-import ItemCount from "./Components/ItemCount";
-import ItemDetailContainer from "./Components/ItemDetailContainer";
+import Main from "./Components/Main";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
-  const miOnAdd = () => {};
-
   return (
-    <>
+    <BrowserRouter>
       <Header />
-      <ItemListContainer nombre="Daniel" apellido="Hernandez" />
-      <ItemDetailContainer />
-      <ItemCount initial={1} onAdd={miOnAdd} stock={5} />
+      <Main nombre="Daniel" apellido="Hernandez" />
       <Footer />
-    </>
+      <ToastContainer />
+    </BrowserRouter>
   );
 }
 

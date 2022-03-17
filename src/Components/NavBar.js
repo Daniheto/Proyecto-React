@@ -1,11 +1,13 @@
+import { NavLink } from "react-router-dom";
 import CartWidget from "./CartWidget";
 
 const NavBar = () => {
   return (
     <nav>
-      <a href="https://www.google.com/">Google</a>
-      <a href="https://plataforma.coderhouse.com/">Coder</a>
-      <a href="https://www.youtube.com/">YouTube</a>
+      <NavLink to="/division/1">Discos</NavLink>
+      <NavLink to="/division/2">Remeras</NavLink>
+      <NavLink to="/division/3">Shorts</NavLink>
+      <NavLink to="/carrito">Carrito</NavLink>
       <CartWidget />
     </nav>
   );

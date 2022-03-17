@@ -1,33 +1,37 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import ItemDetail from "./ItemDetail";
 
-let detalleProducto = [{ indice: 1, nombre: "producto1", precio: 100 }];
+let detalleProducto = {
+  indice: 1,
+  nombre: "producto1",
+  precio: 100,
+  categoria: 1,
+};
 
 const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(true);
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
     const promesa = new Promise((res, rej) => {
       setTimeout(() => {
         res(detalleProducto);
-      }, 2000);
+      }, 1000);
     });
 
     promesa
       .then((respuestaApi) => {
-        setProductos(detalleProducto);
+        setProductos(respuestaApi);
+      })
+      .catch((errorApi) => {
+        toast.error("Error al cargar el detalle");
       })
 
-      .catch((errorApi) => {
-        console.log(errorApi);
-        setError("Hubo un error");
-      })
       .finally(() => {
         setLoading(false);
       });
-  });
+  }, []);
 
   return (
     <div className="detalle">
