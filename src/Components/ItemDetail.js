@@ -1,12 +1,12 @@
 const ItemDetail = ({ productos }) => {
   return (
-    <ul>
-      <>
-        <li>{productos.nombre}</li>
-        <li>{productos.indice}</li>
-        <li>${productos.precio}</li>
-      </>
-    </ul>
+    <>
+      <article>
+        <h2>{productos.nombre}</h2>
+        <p>{productos.indice}</p>
+        <p>${productos.precio}</p>
+      </article>
+    </>
   );
 };
 

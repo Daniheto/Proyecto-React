@@ -16,7 +16,6 @@ const Main = (greeting) => {
       </h2>
       <ItemListContainer />
       <ItemDetailContainer />
-      <ItemCount initial={1} onAdd={miOnAdd} stock={5} />
   */}
       <Routes>
         <Route path="/" element={<ItemListContainer />} />

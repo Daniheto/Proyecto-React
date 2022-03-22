@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import ItemCount from "./ItemCount";
 import ItemDetail from "./ItemDetail";
 
 let detalleProducto = {
@@ -9,9 +10,10 @@ let detalleProducto = {
   categoria: 1,
 };
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = (greeting) => {
   const [loading, setLoading] = useState(true);
   const [productos, setProductos] = useState([]);
+  const [seleccionado, setSeleccionado] = useState(false);
 
   useEffect(() => {
     const promesa = new Promise((res, rej) => {
@@ -33,10 +35,23 @@ const ItemDetailContainer = () => {
       });
   }, []);
 
+  const onAdd = (unidadSeleccionada) => {
+    console.log("unidadSeleccionada");
+    if (unidadSeleccionada != undefined) {
+      setSeleccionado(unidadSeleccionada);
+    }
+  };
+
   return (
     <div className="detalle">
       <p>{loading ? "Cargando..." : "Ya tenes el detalle del producto"}</p>
       <ItemDetail productos={productos} />
+      <ItemCount initial={1} onAdd={onAdd} stock={5} />
+      <p>
+        {seleccionado
+          ? "Ya elegiste una cantidad"
+          : "No se eligio ninguna cantidad"}
+      </p>
     </div>
   );
 };

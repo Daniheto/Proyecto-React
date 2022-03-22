@@ -23,7 +23,11 @@ const ItemListContainer = (greeting) => {
 
     promesa
       .then((respuestaApi) => {
-        setProductos(respuestaApi);
+        setProductos(
+          id
+            ? respuestaApi.filter((producto) => producto.categoria == +id)
+            : respuestaApi
+        );
       })
 
       .catch((errorApi) => {
@@ -32,7 +36,7 @@ const ItemListContainer = (greeting) => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="mainStyle">
