@@ -11,9 +11,8 @@ const ItemCount = (greeting, { onAdd }) => {
     if (contador > greeting.initial) setContador(contador - 1);
   };
 
-  const handleConfirmar = (e) => {
-    console.log(e);
-    onAdd(contador);
+  const handleConfirmar = () => {
+    if (contador >= greeting.initial) setContador(greeting.onAdd);
   };
 
   return (

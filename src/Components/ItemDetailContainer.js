@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import ItemCount from "./ItemCount";
 import ItemDetail from "./ItemDetail";
@@ -7,13 +8,14 @@ let detalleProducto = {
   indice: 1,
   nombre: "producto1",
   precio: 100,
-  categoria: 1,
+  categoria: "indumentaria",
 };
 
 const ItemDetailContainer = (greeting) => {
   const [loading, setLoading] = useState(true);
   const [productos, setProductos] = useState([]);
   const [seleccionado, setSeleccionado] = useState(false);
+  const { id } = useParams();
 
   useEffect(() => {
     const promesa = new Promise((res, rej) => {
@@ -52,6 +54,7 @@ const ItemDetailContainer = (greeting) => {
           ? "Ya elegiste una cantidad"
           : "No se eligio ninguna cantidad"}
       </p>
+      {seleccionado ? <Link to="/carrito">carrito</Link> : null}
     </div>
   );
 };

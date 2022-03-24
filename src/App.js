@@ -4,15 +4,18 @@ import Main from "./Components/Main";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter } from "react-router-dom";
+import MiProvider from "./Components/CartContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Main nombre="Daniel" apellido="Hernandez" />
-      <Footer />
-      <ToastContainer />
-    </BrowserRouter>
+    <MiProvider>
+      <BrowserRouter>
+        <Header />
+        <Main nombre="Daniel" apellido="Hernandez" />
+        <Footer />
+        <ToastContainer />
+      </BrowserRouter>
+    </MiProvider>
   );
 }
 
