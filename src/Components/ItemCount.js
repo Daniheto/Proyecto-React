@@ -19,11 +19,11 @@ const ItemCount = (greeting, { onAdd }) => {
     <div className="card">
       <div>
         <p>Cantidad : {contador} </p>
-        <button className="aumenta" onClick={handleClick}>
-          +
-        </button>
         <button className="disminuye" onClick={restar}>
           -
+        </button>
+        <button className="aumenta" onClick={handleClick}>
+          +
         </button>
       </div>
       <button className="confirmar" onClick={handleConfirmar}>

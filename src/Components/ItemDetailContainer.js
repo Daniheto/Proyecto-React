@@ -4,12 +4,11 @@ import { toast } from "react-toastify";
 import ItemCount from "./ItemCount";
 import ItemDetail from "./ItemDetail";
 
-let detalleProducto = {
-  indice: 1,
-  nombre: "producto1",
-  precio: 100,
-  categoria: "indumentaria",
-};
+let detalleProducto = [
+  { indice: 1, nombre: "producto1", precio: 100, categoria: "indumentaria" },
+  { indice: 2, nombre: "producto2", precio: 200, categoria: "elementos" },
+  { indice: 3, nombre: "producto3", precio: 300, categoria: "objetos" },
+];
 
 const ItemDetailContainer = (greeting) => {
   const [loading, setLoading] = useState(true);
@@ -26,7 +25,7 @@ const ItemDetailContainer = (greeting) => {
 
     promesa
       .then((respuestaApi) => {
-        setProductos(respuestaApi);
+        setProductos(respuestaApi.find((producto) => producto.indice == +id));
       })
       .catch((errorApi) => {
         toast.error("Error al cargar el detalle");
@@ -47,7 +46,7 @@ const ItemDetailContainer = (greeting) => {
   return (
     <div className="detalle">
       <p>{loading ? "Cargando..." : "Ya tenes el detalle del producto"}</p>
-      <ItemDetail productos={productos} />
+      <ItemDetail key={productos.id} productos={productos} />
       <ItemCount initial={1} onAdd={onAdd} stock={5} />
       <p>
         {seleccionado
