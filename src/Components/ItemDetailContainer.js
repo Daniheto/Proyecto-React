@@ -1,19 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import ItemCount from "./ItemCount";
 import ItemDetail from "./ItemDetail";
 
 let detalleProducto = [
-  { indice: 1, nombre: "producto1", precio: 100, categoria: "indumentaria" },
-  { indice: 2, nombre: "producto2", precio: 200, categoria: "elementos" },
-  { indice: 3, nombre: "producto3", precio: 300, categoria: "objetos" },
+  {
+    indice: 1,
+    nombre: "producto1",
+    precio: 100,
+    stock: 5,
+    categoria: "indumentaria",
+  },
+  {
+    indice: 2,
+    nombre: "producto2",
+    precio: 200,
+    stock: 5,
+    categoria: "elementos",
+  },
+  {
+    indice: 3,
+    nombre: "producto3",
+    precio: 300,
+    stock: 5,
+    categoria: "objetos",
+  },
 ];
 
-const ItemDetailContainer = (greeting) => {
+const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
   const [productos, setProductos] = useState([]);
-  const [seleccionado, setSeleccionado] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -36,24 +52,10 @@ const ItemDetailContainer = (greeting) => {
       });
   }, []);
 
-  const onAdd = (unidadSeleccionada) => {
-    console.log("unidadSeleccionada");
-    if (unidadSeleccionada != undefined) {
-      setSeleccionado(unidadSeleccionada);
-    }
-  };
-
   return (
     <div className="detalle">
       <p>{loading ? "Cargando..." : "Ya tenes el detalle del producto"}</p>
       <ItemDetail key={productos.id} productos={productos} />
-      <ItemCount initial={1} onAdd={onAdd} stock={5} />
-      <p>
-        {seleccionado
-          ? "Ya elegiste una cantidad"
-          : "No se eligio ninguna cantidad"}
-      </p>
-      {seleccionado ? <Link to="/carrito">carrito</Link> : null}
     </div>
   );
 };

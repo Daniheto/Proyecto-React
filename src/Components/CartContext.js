@@ -1,47 +1,44 @@
 import { createContext, useState } from "react";
 export const contexto = createContext();
-const { Provider } = contexto;
 
-const MiProvider = ({ children }) => {
-  const [cartList, setCartList] = useState([]);
+export const MiProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
 
-  const addItem = (item, cantidad) => {
-    const index = cartList.findIndex((i) => i.item.id === item.id);
-
-    if (index > -1) {
-      const agrego = cartList[index.cantidad];
-
-      cartList.splice(index, 1);
-
-      setCartList([...cartList, { item, cantidad: cantidad + agrego }]);
+  const addItem = (producto, contador) => {
+    let productoCarrito = { producto, contador };
+    let carritoAuxiliar = [];
+    if (isInCart(producto)) {
+      productoCarrito = cart.find((item) => item.producto === producto);
+      productoCarrito.contador = productoCarrito.contador + contador;
+      carritoAuxiliar = [...cart];
     } else {
-      setCartList([...cartList, { item, cantidad }]);
+      carritoAuxiliar = [productoCarrito, ...cart];
+    }
+    setCart(carritoAuxiliar);
+  };
+
+  const removeItem = (producto) => {
+    if (isInCart(producto)) {
+      let carritoAuxiliar = [...cart];
+      carritoAuxiliar = carritoAuxiliar.filter(
+        (item) => item.producto !== producto
+      );
+      setCart(carritoAuxiliar);
     }
   };
 
-  const precioTotal = () => {
-    return cartList.reduce((acum, i) => acum + i.cantidad + i.item.precio, 0);
+  const clear = () => {
+    setCart([]);
   };
 
-  const borrarItem = (id) => {
-    const items = cartList.filter((i) => i.item.id !== id);
-    setCartList(items);
-  };
-
-  const vaciar = () => {
-    setCartList([]);
-  };
-
-  const IsInCart = () => {
-    return cartList.reduce((acum, i) => acum + i.cantidad, 0);
+  const isInCart = (producto) => {
+    return cart && cart.some((item) => item.producto === producto);
   };
 
   return (
-    <Provider
-      value={{ cartList, addItem, precioTotal, vaciar, borrarItem, IsInCart }}
-    >
+    <contexto.Provider value={{ addItem, removeItem, clear, cart }}>
       {children}
-    </Provider>
+    </contexto.Provider>
   );
 };
 

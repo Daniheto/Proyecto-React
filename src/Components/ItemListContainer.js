@@ -4,9 +4,27 @@ import { toast } from "react-toastify";
 import ItemList from "./ItemList";
 
 let productosIniciales = [
-  { indice: 1, nombre: "producto1", precio: 100, categoria: "indumentaria" },
-  { indice: 2, nombre: "producto2", precio: 200, categoria: "elementos" },
-  { indice: 3, nombre: "producto3", precio: 300, categoria: "objetos" },
+  {
+    indice: 1,
+    nombre: "producto1",
+    precio: 100,
+    stock: 5,
+    categoria: "indumentaria",
+  },
+  {
+    indice: 2,
+    nombre: "producto2",
+    precio: 200,
+    stock: 5,
+    categoria: "elementos",
+  },
+  {
+    indice: 3,
+    nombre: "producto3",
+    precio: 300,
+    stock: 5,
+    categoria: "objetos",
+  },
 ];
 
 const ItemListContainer = (greeting) => {

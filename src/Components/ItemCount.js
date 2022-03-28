@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ItemCount = (greeting, { onAdd }) => {
+const ItemCount = (greeting) => {
   const [contador, setContador] = useState(greeting.initial);
 
   const handleClick = () => {
@@ -12,7 +12,7 @@ const ItemCount = (greeting, { onAdd }) => {
   };
 
   const handleConfirmar = () => {
-    if (contador >= greeting.initial) setContador(greeting.onAdd);
+    greeting.onAdd(contador);
   };
 
   return (

@@ -1,33 +1,27 @@
 import { useContext, useState } from "react";
 import { contexto } from "./CartContext";
-import CarritoItem from "./CarritoItem";
 
 const Carrito = () => {
-  const { cartList, vaciarCarrito, precioTotal } = useContext(contexto);
-  const [loading, setLoading] = useState(true);
-
-  setTimeout(() => {
-    setLoading(false);
-  }, 2000);
+  const { clear, cart, removeItem } = useContext(contexto);
 
   return (
     <>
       <h2>Carrito</h2>
       <div>
-        <div>
-          <div>
-            {cartList.map((i) => (
-              <CarritoItem
-                key={i.item.id}
-                Item={i.item}
-                Quantity={i.cantidad}
-              />
-            ))}
+        {cart.map((item) => (
+          <div key={item.id}>
+            <h2>{item.producto.nombre}</h2>
+            <img src="https://picsum.photos/200/150" alt="" />
+            <p>Unidades seleccionadas: {item.contador}</p>
+            <p>${item.producto.precio}</p>
+            <p>Total: ${item.producto.precio * item.contador}</p>
+            <button onClick={() => removeItem(item.producto)}>
+              Remover producto
+            </button>
           </div>
-        </div>
-        <button onClick={vaciarCarrito}>Vaciar Carrito</button>
-        <h2>Total: {precioTotal()} $</h2>
+        ))}
       </div>
+      <button onClick={clear}>Vaciar Carrito</button>
     </>
   );
 };
