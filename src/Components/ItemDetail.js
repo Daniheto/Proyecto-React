@@ -6,7 +6,6 @@ import { contexto } from "./CartContext";
 export const ItemDetail = ({ productos }) => {
   const [seleccionado, setSeleccionado] = useState(false);
   const { addItem, cart } = useContext(contexto);
-  const { clear, removeItem } = useContext(contexto);
 
   const onAdd = (unidadSeleccionada) => {
     addItem(productos, unidadSeleccionada);
@@ -14,7 +13,6 @@ export const ItemDetail = ({ productos }) => {
       setSeleccionado(unidadSeleccionada);
     }
   };
-  console.log("cart", cart);
 
   return (
     <>
@@ -34,7 +32,6 @@ export const ItemDetail = ({ productos }) => {
           <button>Carrito</button>
         </Link>
       ) : null}
-      {/* <button onClick={() => removeItem(productos)}>Remover del Carrito</button> */}
     </>
   );
 };

@@ -1,8 +1,17 @@
 import { useContext, useState } from "react";
 import { contexto } from "./CartContext";
+import { Link } from "react-router-dom";
+import ItemCount from "./ItemCount";
 
 const Carrito = () => {
-  const { clear, cart, removeItem } = useContext(contexto);
+  const { clear, cart, removeItem, total } = useContext(contexto);
+  const [seleccionado, setSeleccionado] = useState(false);
+
+  const onAdd = (unidadSeleccionada) => {
+    if (unidadSeleccionada != undefined) {
+      setSeleccionado(unidadSeleccionada);
+    }
+  };
 
   return (
     <>
@@ -22,6 +31,17 @@ const Carrito = () => {
         ))}
       </div>
       <button onClick={clear}>Vaciar Carrito</button>
+      <p>Total Compra: ${total}</p>
+      <p>
+        {seleccionado
+          ? "Ya elegiste una cantidad"
+          : "No se agrego ningun producto al carrito, por favor agrega uno"}
+      </p>
+      {seleccionado ? (
+        <Link to="/">
+          <button>Catalago</button>
+        </Link>
+      ) : null}
     </>
   );
 };

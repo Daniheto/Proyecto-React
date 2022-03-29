@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const ItemCount = (greeting) => {
   const [contador, setContador] = useState(greeting.initial);
+  const [seleccionado, setSeleccionado] = useState(false);
 
   const handleClick = () => {
     if (contador < greeting.stock) setContador(contador + 1);
@@ -11,8 +12,14 @@ const ItemCount = (greeting) => {
     if (contador > greeting.initial) setContador(contador - 1);
   };
 
-  const handleConfirmar = () => {
+  const handleConfirmar = (unidadSeleccionada) => {
     greeting.onAdd(contador);
+  };
+
+  const onAdd = (unidadSeleccionada) => {
+    if (unidadSeleccionada != undefined) {
+      setSeleccionado(unidadSeleccionada);
+    }
   };
 
   return (
@@ -26,7 +33,7 @@ const ItemCount = (greeting) => {
           +
         </button>
       </div>
-      <button className="confirmar" onClick={handleConfirmar}>
+      <button className="confirmar" onAdd={onAdd} onClick={handleConfirmar}>
         Confirmar
       </button>
     </div>
