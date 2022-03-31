@@ -4,11 +4,15 @@ export const contexto = createContext();
 export const MiProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const [parcial, setParcial] = useState(0);
 
   const addItem = (producto, contador) => {
     let productoCarrito = { producto, contador };
     let carritoAuxiliar = [];
+
+    setParcial(producto.precio * contador);
     setTotal(total + producto.precio * contador);
+
     if (isInCart(producto)) {
       productoCarrito = cart.find((item) => item.producto === producto);
       productoCarrito.contador = productoCarrito.contador + contador;
@@ -38,7 +42,9 @@ export const MiProvider = ({ children }) => {
   };
 
   return (
-    <contexto.Provider value={{ addItem, removeItem, clear, cart, total }}>
+    <contexto.Provider
+      value={{ addItem, removeItem, clear, cart, total, parcial }}
+    >
       {children}
     </contexto.Provider>
   );

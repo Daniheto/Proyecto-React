@@ -25,6 +25,41 @@ let detalleProducto = [
     stock: 5,
     categoria: "objetos",
   },
+  {
+    indice: 4,
+    nombre: "producto4",
+    precio: 400,
+    stock: 5,
+    categoria: "indumentaria",
+  },
+  {
+    indice: 5,
+    nombre: "producto5",
+    precio: 500,
+    stock: 5,
+    categoria: "elementos",
+  },
+  {
+    indice: 6,
+    nombre: "producto6",
+    precio: 600,
+    stock: 5,
+    categoria: "objetos",
+  },
+  {
+    indice: 7,
+    nombre: "producto7",
+    precio: 700,
+    stock: 5,
+    categoria: "indumentaria",
+  },
+  {
+    indice: 8,
+    nombre: "producto8",
+    precio: 800,
+    stock: 5,
+    categoria: "elementos",
+  },
 ];
 
 const ItemDetailContainer = () => {
@@ -33,23 +68,21 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const promesa = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(detalleProducto);
-      }, 1000);
-    });
-
-    promesa
-      .then((respuestaApi) => {
-        setProductos(respuestaApi.find((producto) => producto.indice == +id));
-      })
-      .catch((errorApi) => {
-        toast.error("Error al cargar el detalle");
-      })
-
-      .finally(() => {
-        setLoading(false);
-      });
+    // const promesa = new Promise((res, rej) => {
+    //   setTimeout(() => {
+    //     res(detalleProducto);
+    //   }, 1000);
+    // });
+    // promesa
+    //   .then((respuestaApi) => {
+    //     setProductos(respuestaApi.find((producto) => producto.indice == +id));
+    //   })
+    //   .catch((errorApi) => {
+    //     toast.error("Error al cargar el detalle");
+    //   })
+    //   .finally(() => {
+    //     setLoading(false);
+    //   });
   }, []);
 
   return (

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ItemCount from "./ItemCount";
 
 const Carrito = () => {
-  const { clear, cart, removeItem, total } = useContext(contexto);
+  const { clear, cart, removeItem, total, parcial } = useContext(contexto);
   const [seleccionado, setSeleccionado] = useState(false);
 
   const onAdd = (unidadSeleccionada) => {
@@ -23,7 +23,7 @@ const Carrito = () => {
             <img src="https://picsum.photos/200/150" alt="" />
             <p>Unidades seleccionadas: {item.contador}</p>
             <p>${item.producto.precio}</p>
-            <p>Total: ${item.producto.precio * item.contador}</p>
+            <p>Total: ${parcial}</p>
             <button onClick={() => removeItem(item.producto)}>
               Remover producto
             </button>
