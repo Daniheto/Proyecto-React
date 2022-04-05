@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { contexto } from "./CartContext";
 import { Link } from "react-router-dom";
-import ItemCount from "./ItemCount";
+import { db } from "./Firebase";
 
 const Carrito = () => {
   const { clear, cart, removeItem, total, parcial } = useContext(contexto);

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db } from "./Firebase";
 import ItemList from "./ItemList";
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, query, where } from "firebase/firestore";
 
 let productosIniciales = [
   {
@@ -70,24 +70,44 @@ const ItemListContainer = (greeting) => {
   const { id } = useParams();
 
   useEffect(() => {
-    const productosCollection = collection(db, "productos");
-    const documentos = getDocs(productosCollection);
+    if (!id) {
+      const productosCollection = collection(db, "productos");
+      const documentos = getDocs(productosCollection);
 
-    documentos
-      .then((respuesta) => {
-        const aux = [];
-        respuesta.forEach((documento) => {
-          const productos = {
-            id: documento.id,
-            ...documento.data(),
-          };
-          aux.push(productos);
-        });
-        setProductos(aux);
-      })
-      .catch(() => {
-        toast.error("Error al cargar los productos");
-      });
+      documentos
+        .then((respuesta) =>
+          setProductos(respuesta.docs.map((doc) => doc.data()))
+        )
+        .catch((errorApi) => toast.error("Error al cargar el detalle"))
+        .finally(() => setLoading(false));
+    } else {
+      const productosCollection = collection(db, "productos");
+      const miFiltro = query(productosCollection, where("categoria", "==", id));
+      const documentos = getDocs(miFiltro);
+
+      documentos
+        .then((respuesta) =>
+          setProductos(respuesta.docs.map((doc) => doc.data()))
+        )
+        .catch((errorApi) => toast.error("Error al cargar el detalle"))
+        .finally(() => setLoading(false));
+    }
+
+    // documentos
+    //   .then((respuesta) => {
+    //     const aux = [];
+    //     respuesta.forEach((documento) => {
+    //       const productos = {
+    //         id: documento.id,
+    //         ...documento.data(),
+    //       };
+    //       aux.push(productos);
+    //     });
+    //     setProductos(aux);
+    //   })
+    //   .catch(() => {
+    //     toast.error("Error al cargar los productos");
+    //   });
     // const promesa = new Promise((res, rej) => {
     //   setTimeout(() => {
     //     res(productosIniciales);
