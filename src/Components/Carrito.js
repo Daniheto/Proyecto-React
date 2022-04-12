@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { contexto } from "./CartContext";
 import { Link } from "react-router-dom";
 import { db } from "./Firebase";
+import { addDoc, collection } from "firebase/firestore";
 
 const Carrito = () => {
   const { clear, cart, removeItem, total, parcial } = useContext(contexto);
