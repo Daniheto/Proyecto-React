@@ -16,5 +16,4 @@ Mediante una maquetación sencilla usando sass y haciendo uso de las herramienta
 - React Router Dom
 - Sass
 - Firebase
-- Firestore
 - Toastify
