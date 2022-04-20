@@ -5,13 +5,6 @@
 }
 
 $colorPrimario: rgb(39, 39, 126);
-// $colorPrimario: #00c9c8;
-
-@mixin background {
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
 
 html,
 body,
@@ -58,15 +51,6 @@ main {
   flex-grow: 1;
   padding: 1rem;
 
-  /*
-  .tituloMain {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-  */
-
   .mainStyle {
     margin: 2rem;
     padding: 2rem;
@@ -76,9 +60,8 @@ main {
     background-color: white;
     padding: 1rem;
     border-radius: 3px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    text-align: center;
     transition: all 0.3s ease;
+    text-align: center;
 
     &:hover {
       box-shadow: 0 0 10px 8px rgba(0, 0, 0, 0.3);
@@ -156,7 +139,6 @@ main {
     background-color: white;
     padding: 1rem;
     border-radius: 3px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     text-align: center;
     transition: all 0.3s ease;
 
@@ -204,6 +186,77 @@ main {
         color: $colorPrimario;
       }
     }
+  }
+
+  h2 {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .carritoVacio {
+    margin-top: 1rem;
+    text-align: center;
+
+    .catalogo {
+      background-color: $colorPrimario;
+      color: white;
+      margin-top: 1rem;
+      margin-left: 1rem;
+    }
+  }
+
+  .carrito {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    text-align: center;
+
+    .productosCarrito {
+      text-align: center;
+      box-shadow: 0 0 10px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    p {
+      margin-top: 1rem;
+    }
+
+    button {
+      margin-top: 1rem;
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+
+      &:hover {
+        background-color: rgb(39, 39, 126);
+        color: rgb(251, 255, 251);
+      }
+    }
+
+    .confirmarCompra {
+      background-color: $colorPrimario;
+      color: white;
+      margin-top: 1rem;
+      margin-left: 1rem;
+    }
+  }
+
+  .cierre {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    text-align: center;
   }
 }
 

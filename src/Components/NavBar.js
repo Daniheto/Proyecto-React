@@ -1,14 +1,14 @@
 import { NavLink } from "react-router-dom";
-import CartWidget from "./CartWidget";
 
 const NavBar = () => {
   return (
     <nav>
-      <NavLink to="/division/indumentaria">Discos</NavLink>
-      <NavLink to="/division/elementos">Remeras</NavLink>
-      <NavLink to="/division/objetos">Shorts</NavLink>
-      <NavLink to="/carrito">Carrito</NavLink>
-      <CartWidget />
+      <NavLink to="/division/discos">Discos</NavLink>
+      <NavLink to="/division/remeras">Remeras</NavLink>
+      <NavLink to="/division/shorts">Shorts</NavLink>
+      <NavLink to="/carrito">
+        <img src="/carrito.png" alt="" height="35px" width="32px" />
+      </NavLink>
     </nav>
   );
 };
