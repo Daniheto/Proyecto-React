@@ -6,6 +6,7 @@
 
 - Descripción del proyecto
 - Herramientas utilizadas
+- proceso de instalación y configuración
 
 ### Descripción del proyecto
 
@@ -15,7 +16,19 @@ Mediante una maquetación sencilla usando sass y haciendo uso de las herramienta
 ### Herramientas utilizadas
 
 - React
-- React Router Dom
+- npm
 - Sass
+- React Router Dom
 - Firebase
 - Toastify
+
+### Proceso de instalación y configuración
+
+    - Instalación de React
+    - Instalación de npm
+    - Instalación de Sass
+    - Instalación de React Router Dom
+    - Instalación de Firebase
+    - Instalación de Toastify
+
+    Una vez instaladas estas herramientas, se debe crear un proyecto en Netlify, para poder visualizar el proyecto.
